@@ -8,7 +8,7 @@ const Intendencia = () => {
   return (
     <>
       <Paper elevation={6} square={false} className="p-4 mb-5">
-        <h2>Intendenta Dra. Rossana Chahla</h2>
+        <h3>Intendenta Dra. Rossana Chahla</h3>
         <p>Domicilio: 9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)</p>
         <p>Teléfono: (0381) 4516500</p>
         <p>Correo Electrónico: intendencia@smt.gob.ar</p>
