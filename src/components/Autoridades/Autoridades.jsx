@@ -20,7 +20,7 @@ const SecretariaGeneral = () => {
   return (
     <>
       <Paper elevation={6} square={false} className="p-4 mb-5">
-        <h2>Secretaria Mg. Camila Giuliano</h2>
+        <h3>Secretaria Mg. Camila Giuliano</h3>
         <p>Domicilio: 9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)</p>
         <p>Teléfono: (0381) 4516500</p>
         <p>Correo Electrónico: sgeneral@smt.gob.ar</p>
@@ -32,7 +32,7 @@ const Subsecretaria = () => {
   return (
     <>
       <Paper elevation={6} square={false} className="p-4 mb-5">
-        <h2>Subsecretaria Dra. Graciela Alejandra Trejo</h2>
+        <h3>Subsecretaria Dra. Graciela Alejandra Trejo</h3>
         <p>Domicilio: 9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)</p>
         <p>Teléfono: (0381) 4516500</p>
         <p>Correo Electrónico: subsdesarrolloh@smt.gob.ar</p>
@@ -46,33 +46,33 @@ const Direccion = () => {
       <Paper elevation={6} square={false} className="p-4 mb-5">
         <h6>Directora: Lic. Isabel Cristina Amate Perez</h6>
         <h6>Subdirectora: Prof. Marina Runco</h6>
-        <p>Domicilio: Jujuy 259 - San Miguel de Tucumán (C.P. 4000)</p>
-        <p>Teléfono: (0381) 4223530</p>
-        <p>Correo Electrónico: direccioneducacion.smt@gmail.com</p>
-        <h5 className="mt-5">
+        <p className="mb-2">
+          Domicilio: Jujuy 259 - San Miguel de Tucumán (C.P. 4000)
+        </p>
+        <p className="mb-2">Teléfono: (0381) 4223530</p>
+        <p className="mb-2">
+          Correo Electrónico: direccioneducacion.smt@gmail.com
+        </p>
+        <h5 className="mt-5 mb-2">
           Comisión de Administración y Gestión de Padrones Docentes Municipales
         </h5>
         <div className="mt-3">
-          <p className="m-0">
-            <b>Nivel Inicial </b>
-          </p>
+          <p className="m-0" style={{fontWeight: '600'}}>Nivel Inicial</p>
           <p className="m-0">Responsable Prof. Mariela Rodríguez</p>
           <p className="m-0">Correo Electrónico: mrodriguez@smt.gob.ar</p>
         </div>
         <div className="mt-3">
-          <p className="m-0">
-            <b>Nivel Primario </b>
+          <p className="m-0" style={{fontWeight: '600'}}>
+            Nivel Primario - Gabinete Psicopedagógico Interdisciplinario -
+            Maestra de Apoyo Diferencial
           </p>
-          <p className="m-0">Gabinete Psicopedagógico Interdisciplinario
-            - Maestra de Apoyo Diferencial</p>
           <p className="m-0">Responsable Lic. Alejandra Paola Vazquez</p>
           <p className="m-0">Correo Electrónico: avazquez@smt.gob.ar</p>
         </div>
         <div className="mt-3">
-          <p className="m-0">
-            <b>Nivel Secundario </b>
+          <p className="m-0" style={{fontWeight: '600'}}>
+            Nivel Secundario - Asesor Pedagógico - Capacitador Laboral
           </p>
-          <p className="m-0">Asesor Pedagógico - Capacitador Laboral</p>
           <p className="m-0">Responsable Ing. José Herrera</p>
           <p className="m-0">Correo Electrónico: jherrera@smt.gob.ar</p>
         </div>
