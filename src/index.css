@@ -14,7 +14,7 @@
   min-height: 100vh;
 }
 .LayoutHeight2 {
-  height: 75vh;
+  min-height: 75vh;
 }
 
 body {
