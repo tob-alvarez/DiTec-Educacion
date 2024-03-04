@@ -34,7 +34,7 @@ export default function Establecimientos() {
   };
 
   return (
-    <div className='container d-flex flex-wrap gap-3'>
+    <div className='container d-flex flex-wrap gap-3 mt-5 mb-5'>
     <Card sx={{ maxWidth: 400 }}>
       <CardHeader style={{backgroundColor: "#0A82B4", textAlign: "center" }} 
         title="Nivel Inicial"
@@ -79,6 +79,55 @@ export default function Establecimientos() {
 
       </CardContent>
     </Card>
+
+    <Card sx={{ maxWidth: 400 }}>
+      <CardHeader style={{backgroundColor: "#F1EA10", textAlign: "center" }} 
+        title="Nivel Primario"
+      />
+      <CardContent>
+        <Typography variant="body1" color="text.secondary">
+          Escuela Municipal Alfonsina Storni<br></br></Typography>
+        <Typography variant="body2" color="text.secondary" padding={2}> 
+          (Inicial y Primario)<br></br>
+          Directora Prof. Claudia Suriano<br></br>
+          Ricardo Rojas al 300 - San Miguel de Tucumán<br></br>
+          Teléfono: (0381) 4291244<p></p>
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+        Escuela Municipal y Cooperativa Gabriela Mistral - (Primario)<br></br></Typography>
+        <Typography variant="body2" color="text.secondary" padding={2}> 
+          Directora Prof. Ana Maria Wierna<br></br>
+          Mendoza 2176 - San Miguel de Tucumán<br></br>
+          Teléfono: (0381) 4327247<p></p>
+        </Typography>
+      </CardContent>
+    </Card>
+
+    <Card sx={{ maxWidth: 400 }}>
+      <CardHeader style={{backgroundColor: "#07C85F", textAlign: "center" }} 
+        title="Nivel Secundario"
+      />
+      <CardContent>
+        <Typography variant="body1" color="text.secondary">
+          Escuela Municipal Alfonsina Storni<br></br></Typography>
+        <Typography variant="body2" color="text.secondary" padding={2}> 
+          (Secundario)<br></br>
+          Directora Prof. María Graciela Calderón<br></br>
+          Thomas Edison 321 - San Miguel de Tucumán<br></br>
+          Teléfono: (0381) 4525648<p></p>
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+        Escuela Municipal y Cooperativa Gabriela Mistral<br></br></Typography>
+        <Typography variant="body2" color="text.secondary" padding={2}> 
+          (Secundario)<br></br>
+          Directora Prof. Hugo D'Angelis<br></br>
+          Juan José Paso 167 - San Miguel de Tucumán<br></br>
+          Teléfono: (0381) 4321435<p></p>
+        </Typography>
+      </CardContent>
+    </Card>
     </div>
   );
 }
+
+
