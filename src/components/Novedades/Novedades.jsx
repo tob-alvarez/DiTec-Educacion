@@ -29,7 +29,6 @@ const Novedades = () => {
         },
       ];
 
-
   return (
     <div className="container mt-3">
       <div className="container mt-3">
