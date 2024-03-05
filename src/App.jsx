@@ -5,6 +5,7 @@ import Autoridades from "./components/Autoridades/Autoridades";
 import Establecimientos from "./components/Establecimientos/Establecimientos";
 import Convocatorias from "./components/Convocatorias/Convocatorias";
 import Padrones from "./components/Padrones/Padrones";
+import Novedades from "./components/Novedades/Novedades";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/establecimientos" element={<Establecimientos />} />
             <Route exact path="/convocatorias" element={<Convocatorias />} />
             <Route exact path="/padrones" element={<Padrones />} />
+            <Route exact path="/novedades" element={<Novedades />} />
             {/* <Route exact path="/perfil" element={<Perfil />} /> */}
           </Routes>
         </Layout>

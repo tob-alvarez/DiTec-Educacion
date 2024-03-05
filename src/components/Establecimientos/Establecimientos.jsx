@@ -1,41 +1,22 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
+/* eslint-disable react/no-unescaped-entities */
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Migajas from '../Migajas/Migajas';
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+
 
 export default function Establecimientos() {
-  const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
+  
   return (
-    <div className='container d-flex flex-wrap gap-3 mt-5 mb-5'>
-    <Card sx={{ maxWidth: 400 }}>
+    <>
+    <div className='container mt-3'>
+      <Migajas componente={'Establecimientos'}/>
+    </div>
+    <div className='container d-flex flex-wrap gap-3 mt-3 mb-5'>
+    <Card sx={{ maxWidth: 350 }}>
       <CardHeader style={{backgroundColor: "#0A82B4", textAlign: "center" }} 
         title="Nivel Inicial"
       />
@@ -80,7 +61,8 @@ export default function Establecimientos() {
       </CardContent>
     </Card>
 
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={{ maxWidth: 350 }}>
+
       <CardHeader style={{backgroundColor: "#F1EA10", textAlign: "center" }} 
         title="Nivel Primario"
       />
@@ -94,8 +76,9 @@ export default function Establecimientos() {
           Teléfono: (0381) 4291244<p></p>
         </Typography>
         <Typography variant="body1" color="text.secondary">
-        Escuela Municipal y Cooperativa Gabriela Mistral - (Primario)<br></br></Typography>
+        Escuela Municipal y Cooperativa Gabriela Mistral<br></br></Typography>
         <Typography variant="body2" color="text.secondary" padding={2}> 
+          (Primario)<br></br>        
           Directora Prof. Ana Maria Wierna<br></br>
           Mendoza 2176 - San Miguel de Tucumán<br></br>
           Teléfono: (0381) 4327247<p></p>
@@ -103,7 +86,7 @@ export default function Establecimientos() {
       </CardContent>
     </Card>
 
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={{ maxWidth: 350 }}>
       <CardHeader style={{backgroundColor: "#07C85F", textAlign: "center" }} 
         title="Nivel Secundario"
       />
@@ -127,6 +110,8 @@ export default function Establecimientos() {
       </CardContent>
     </Card>
     </div>
+    </>
+
   );
 }
 
