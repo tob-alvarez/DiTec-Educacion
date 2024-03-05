@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import CardPadrones from '../Padrones/CardPadrones'
+import Migajas from "../Migajas/Migajas";
 
 const Novedades = () => {
 
@@ -31,6 +32,9 @@ const Novedades = () => {
 
   return (
     <div className="container mt-3">
+      <div className="container mt-3">
+      <Migajas componente={'Novedades'}/>
+    </div>
       <h2 className="text-center mb-3">Comunicado de Prensa Nº 1-2024</h2>
       <h4 className="text-center">
         CONVOCATORIA A INSCRIPCIÓN/REINSCRIPCIÓN 2024 - PADRONES DOCENTES 2024

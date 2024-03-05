@@ -1,3 +1,4 @@
+import Migajas from "../Migajas/Migajas";
 import CardPadrones from "./CardPadrones";
 
 const Padrones = () => {
@@ -65,8 +66,11 @@ const Padrones = () => {
     ];
   return (
     <>
+    <div className="container mt-3">
+      <Migajas componente={'Padrones'}/>
+    </div>
       <div className=" d-flex flex-column justify-content-center align-items-center mb-5">
-        <h2 className="mt-3 mb-3">Padrones</h2>
+        <h2 className=" mb-3">Padrones</h2>
         <div className=" d-flex flex-wrap justify-content-center gap-3 mt-5 mb-5">
           <CardPadrones
             title={"Inicial"}

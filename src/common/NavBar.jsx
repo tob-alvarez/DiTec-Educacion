@@ -10,6 +10,7 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import logoMuni from '../assets/Logo_SMT_neg_4.png'
+import SideBarr from "./SideBarr";
 
 export default function NavBar() {
   // const { getAuth, authenticated, logout, user } = useStore();
@@ -49,6 +50,7 @@ export default function NavBar() {
           <AppBar position="static">
             <Toolbar>
               <SideBar />
+              {/* <SideBarr /> */}
               <div className="d-flex justify-content-between align-items-center w-100">
                 <img src={logoMuni} className="logoMuni2" />
                   <div className="d-flex align-items-center">

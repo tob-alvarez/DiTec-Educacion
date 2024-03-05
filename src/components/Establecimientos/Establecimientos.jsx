@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import Migajas from '../Migajas/Migajas';
 
 
 
@@ -10,7 +11,11 @@ export default function Establecimientos() {
 
   
   return (
-    <div className='container d-flex flex-wrap gap-3 mt-5 mb-5'>
+    <>
+    <div className='container mt-3'>
+      <Migajas componente={'Establecimientos'}/>
+    </div>
+    <div className='container d-flex flex-wrap gap-3 mt-3 mb-5'>
     <Card sx={{ maxWidth: 350 }}>
       <CardHeader style={{backgroundColor: "#0A82B4", textAlign: "center" }} 
         title="Nivel Inicial"
@@ -57,6 +62,7 @@ export default function Establecimientos() {
     </Card>
 
     <Card sx={{ maxWidth: 350 }}>
+
       <CardHeader style={{backgroundColor: "#F1EA10", textAlign: "center" }} 
         title="Nivel Primario"
       />
@@ -70,8 +76,9 @@ export default function Establecimientos() {
           Teléfono: (0381) 4291244<p></p>
         </Typography>
         <Typography variant="body1" color="text.secondary">
-        Escuela Municipal y Cooperativa Gabriela Mistral - (Primario)<br></br></Typography>
+        Escuela Municipal y Cooperativa Gabriela Mistral<br></br></Typography>
         <Typography variant="body2" color="text.secondary" padding={2}> 
+          (Primario)<br></br>        
           Directora Prof. Ana Maria Wierna<br></br>
           Mendoza 2176 - San Miguel de Tucumán<br></br>
           Teléfono: (0381) 4327247<p></p>
@@ -103,6 +110,8 @@ export default function Establecimientos() {
       </CardContent>
     </Card>
     </div>
+    </>
+
   );
 }
 

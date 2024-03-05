@@ -3,6 +3,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import Paper from "@mui/material/Paper";
+import Migajas from "../Migajas/Migajas";
 
 const Intendencia = () => {
   return (
@@ -103,7 +104,8 @@ const Autoridades = () => {
 
   return (
     <>
-      <div className="container d-flex justify-content-center mt-3">
+      <div className="container d-flex flex-column justify-content-center mt-3">
+        <Migajas componente={'Autoridades'}/>
         <h2>Autoridades Jerarquicas</h2>
       </div>
       <div className="container d-flex flex-column justify-content-center mt-3">

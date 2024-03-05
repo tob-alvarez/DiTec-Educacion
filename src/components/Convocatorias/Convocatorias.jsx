@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import "./Convocatorias.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Migajas from "../Migajas/Migajas";
 
 const Convocatorias = () => {
   const theme = createTheme({
@@ -31,8 +32,12 @@ const Convocatorias = () => {
 
   return (
     <>
+    <div className="container mt-3">
+
+        <Migajas componente={'Convocatorias'}/>
+    </div>
       <div className="container d-flex flex-column justify-content-center align-items-center mb-5">
-        <h4 className="mt-5 mb-5">
+        <h4 className="mt-3 mb-5">
           Convocatorias para cubrir Cargos y/o Horas Cátedras
         </h4>
         <ThemeProvider theme={theme}>
