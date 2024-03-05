@@ -19,7 +19,7 @@ import "./SideBar.css";
 
 export default function ListaPrueba() {
   const [state, setState] = React.useState({
-    left: false,
+    left: true,
   });
 
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ export default function ListaPrueba() {
 
   const list = () => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: 220 }}
       role="presentation"
       className="d-flex justify-content-between flex-column h-100"
     >
