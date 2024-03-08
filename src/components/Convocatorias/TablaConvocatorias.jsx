@@ -99,13 +99,14 @@ const TablaConvocatorias = ({ idNivel }) => {
             </TableBody>
           </Table>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+            rowsPerPageOptions={[5, 10, 25, { label: "Todas", value: -1 }]}
             component="div"
             count={arrayFiltrado.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
+            labelRowsPerPage='Columnas por pagina'
           />
         </TableContainer>
         <ModalConvocatoria

@@ -24,7 +24,7 @@ export default function Migajas({componente}) {
           onClick={handleClick}
         >
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Home
+          Inicio
         </Link>
         <Typography
           sx={{ display: 'flex', alignItems: 'center' }}

@@ -59,13 +59,13 @@ const Novedades = () => {
         Suplencias. A los fines de ejercer Docencia en Establecimientos
         Educativos del Municipio de San Miguel De Tucumán.
       </p>
-      <div className="mt-5 d-flex gap-2">
+      <div className="mt-5 d-flex flex-wrap gap-2">
         <Button variant="outlined" color="success">CRONOGRAMA</Button>
         <Button variant="outlined" color="success">COMUNICADO DE PRENSA</Button>
         <Button variant="outlined" color="success">GUIA DE INSCRIPCIONES / REINSCRIPCIONES</Button>
         <Button variant="outlined" color="success">DETALLE DE LA DOCUMENTACION A PRESENTAR</Button>
       </div>
-      <div className="mt-5 d-flex gap-2 mb-5 justify-content-center">
+      <div className="mt-5 d-flex flex-wrap gap-2 mb-5 justify-content-center">
         <CardPadrones title={'Inicial'} color={'#0A82B4'} responsable={'Prof. Mariela Rodríguez mrodriguez@smt.gob.ar'} data={novedadesInicial}/>
         <CardPadrones title={'Primario'} color={'#F1EA10'} responsable={'Lic. Alejandra Paola Vazquez avazquez@smt.gob.ar'} data={novedadesPrimario}/>
         <CardPadrones title={'Secundario'} color={'#07C85F'} responsable={'Ing. José Herrera jherrera@smt.gob.ar'} data={novedadesSecundario}/>
