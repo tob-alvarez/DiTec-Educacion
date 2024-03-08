@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import "./Convocatorias.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Migajas from "../Migajas/Migajas";
+import TablaConvocatorias from "./TablaConvocatorias";
+import { useState } from "react";
 
 const Convocatorias = () => {
   const theme = createTheme({
@@ -29,38 +31,39 @@ const Convocatorias = () => {
       },
     },
   });
+  const [idNivelSeleccionado, setIdNivelSeleccionado] = useState(null);
+
 
   return (
     <>
-    <div className="container mt-3">
-
-        <Migajas componente={'Convocatorias'}/>
-    </div>
+      <div className="container mt-3">
+        <Migajas componente={"Convocatorias"} />
+      </div>
       <div className="container d-flex flex-column justify-content-center align-items-center mb-5">
         <h4 className="mt-3 mb-5">
           Convocatorias para cubrir Cargos y/o Horas Cátedras
         </h4>
         <ThemeProvider theme={theme}>
           <div className="d-flex flex-wrap gap-3">
-            <Button variant="contained" color="inicial">
+            <Button variant="contained" color="inicial" onClick={() => setIdNivelSeleccionado(1)}>
               Inicial
             </Button>
-            <Button variant="contained" color="primario">
+            <Button variant="contained" color="primario"  onClick={() => setIdNivelSeleccionado(2)}>
               Primario
             </Button>
-            <Button variant="contained" color="secundario">
+            <Button variant="contained" color="secundario"  onClick={() => setIdNivelSeleccionado(3)}>
               Secundario
             </Button>
-            <Button variant="contained" color="gabinete">
+            <Button variant="contained" color="gabinete"  onClick={() => setIdNivelSeleccionado(4)}>
               Gabinete Psicopedagógico
             </Button>
-            <Button variant="contained" color="maestra">
+            <Button variant="contained" color="maestra" onClick={() => setIdNivelSeleccionado(5)}>
               Maestra Apoyo Diferencial
             </Button>
-            <Button variant="contained" color="asesor">
+            <Button variant="contained" color="asesor" onClick={() => setIdNivelSeleccionado(6)}>
               Asesor Pedagógico
             </Button>
-            <Button variant="contained" color="capacitador">
+            <Button variant="contained" color="capacitador" onClick={() => setIdNivelSeleccionado(7)}>
               Capacitador Laboral
             </Button>
           </div>
@@ -88,6 +91,7 @@ const Convocatorias = () => {
             </Button>
           </div>
         </div>
+        { idNivelSeleccionado === null ? <></> : <TablaConvocatorias idNivel={idNivelSeleccionado} /> }
       </div>
     </>
   );

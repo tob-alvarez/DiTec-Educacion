@@ -13,6 +13,9 @@ const useStore = create((set) => ({
   
   botonState: false,
 
+  resultSearch: [],
+  setResultSearch: (item) => set(() => ({ resultSearch: [item] })),
+
   login: async (values) => {
     set({ botonState: true });
     try {
@@ -58,26 +61,8 @@ const useStore = create((set) => ({
     set({ loading: false});
   },
 
-  resultSearch: [],
-  setResultSearch: (item) => set(() => ({ resultSearch: [item] })),
+  
 
-  valuesGraficos: {
-    procedimiento: "",
-    desde: "",
-    hasta: "",
-  },
-  setValuesGraficos: (newValues) => set((state) => ({ ...state, valuesGraficos: { ...state.valuesGraficos, ...newValues } })),
-
-
-  valuesCapHumano: "",
-  // eslint-disable-next-line no-unused-vars
-  setValuesCapHumano: (newValues) => set((state) => ({ valuesCapHumano: newValues })),
-
-  formFlagReclamos: true,
-  setFormFlagReclamos: () => set((state) => ({ ...state, formFlagReclamos: !state.formFlagReclamos })),
-
-  flagCategoriasFuncionarios: false,
-  setFlagCategoriasFuncionarios: () => set((state) => ({ ...state, flagCategoriasFuncionarios: !state.flagCategoriasFuncionarios })),
 }))
 
 export default useStore;
