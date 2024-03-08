@@ -33,7 +33,6 @@ const Convocatorias = () => {
   });
   const [idNivelSeleccionado, setIdNivelSeleccionado] = useState(null);
 
-
   return (
     <>
       <div className="container mt-3">
