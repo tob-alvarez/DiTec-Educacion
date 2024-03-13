@@ -15,6 +15,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import "./SideBar.css";
 
 export default function ListaPrueba() {
@@ -111,6 +112,18 @@ export default function ListaPrueba() {
             <ListItemText primary="Novedades" />
           </ListItemButton>
          {/* NOVEDADES */}
+        {/* ADMIN */}
+          <ListItemButton
+            onClick={() => redirigir("/administrador")}
+            component="a"
+            className="w-100"
+            >
+            <ListItemIcon>
+              <AdminPanelSettingsIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Panel Administrador" />
+          </ListItemButton>
+         {/* ADMIN */}
       </div>
       <div className="d-flex flex-column justify-content-center align-items-center">
         <p className="footer text-center">

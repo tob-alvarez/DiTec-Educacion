@@ -2,7 +2,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import SideBar from "./SideBar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import useStore from "../Zustand/Zustand.js";
 // import NavBarEsqueleto from "../components/Esqueletos/NavBarEsqueleto";
 import "./Navbar.css";
@@ -10,7 +10,6 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import logoMuni from '../assets/Logo_SMT_neg_4.png'
-import SideBarr from "./SideBarr";
 
 export default function NavBar() {
   // const { getAuth, authenticated, logout, user } = useStore();

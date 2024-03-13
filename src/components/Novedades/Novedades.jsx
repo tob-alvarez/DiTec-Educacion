@@ -59,7 +59,7 @@ const Novedades = () => {
         Suplencias. A los fines de ejercer Docencia en Establecimientos
         Educativos del Municipio de San Miguel De Tucumán.
       </p>
-      <div className="mt-5 d-flex flex-wrap gap-2">
+      <div className="mt-5 d-flex flex-wrap gap-2 justify-content-center">
         <Button variant="outlined" color="success">CRONOGRAMA</Button>
         <Button variant="outlined" color="success">COMUNICADO DE PRENSA</Button>
         <Button variant="outlined" color="success">GUIA DE INSCRIPCIONES / REINSCRIPCIONES</Button>

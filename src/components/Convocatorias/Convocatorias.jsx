@@ -74,8 +74,6 @@ const Convocatorias = () => {
             detalles. Seleccione el Nivel Educativo de su interés, y obtendrá el
             listado completo de las mismas, donde se consigna de manera general
             la convocatoria y la Fecha y Hora de Designación (en Jujuy 259).{" "}
-            <br />
-            Para mayor información, presione el botón Ver Más.
           </p>
           <div className="d-flex align-items-center px-3">
             <p className="m-0 pe-2">Acceda aqui para obtener la</p>
