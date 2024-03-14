@@ -1,24 +1,54 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useContext } from "react";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import { Button, Divider, InputLabel, MenuItem, Select, Switch, TextField } from "@mui/material";
+import {
+  Modal,
+  Box,
+  Button,
+  Divider,
+  InputLabel,
+  MenuItem,
+  Select,
+  Switch,
+  TextField,
+} from "@mui/material";
 import LaunchIcon from "@mui/icons-material/Launch";
-import { formatearFechaHora } from "../../helpers/convertirFecha";
 import { EducaContext } from "../../Context/EducaContext";
-import './Convocatorias.css'
+import axios from "../../config/axios";
+import { formatearFechaHora } from "../../helpers/convertirFecha";
+import "./Convocatorias.css";
 
 const ModalConvocatoria = ({
   convocatoria,
   modalAbierto,
   handleClose,
   modoEdicion,
-  handleEditar,
+  idNivel
 }) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
-  const { arrayNiveles, obtenerNiveles, arrayEstablecimientos, obtenerEstablecimientos, obtenerCausal, arrayCausal, obtenerCaracter, arrayCaracter, convocatorias, setConvocatorias } = useContext(EducaContext);
-  const [checked, setChecked] = useState(true);
-
+  const [formularioValues, setFormularioValues] = useState({
+    id: "",
+    nivel: "",
+    cargo: "",
+    establecimiento: "",
+    causal: "",
+    expte: "",
+    caracter: "",
+    fecha: "",
+    archivo: "",
+    habilita: 0,
+  });
+  const {
+    arrayNiveles,
+    obtenerNiveles,
+    arrayEstablecimientos,
+    obtenerEstablecimientos,
+    obtenerCausal,
+    arrayCausal,
+    obtenerCaracter,
+    arrayCaracter,
+    obtenerConvocatorias
+  } = useContext(EducaContext);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,16 +56,31 @@ const ModalConvocatoria = ({
         await obtenerEstablecimientos();
         await obtenerCausal();
         await obtenerCaracter();
-        // El estado se actualiza de manera asíncrona, así que regístralo aquí
       } catch (error) {
         console.log(error);
       }
     };
-  
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modoEdicion]);
-  
+
+  useEffect(() => {
+    if (convocatoria) {
+      // Si hay una convocatoria y el modal está abierto, establece los valores del formulario
+      setFormularioValues({
+        id: convocatoria.id_convoca,
+        nivel: convocatoria.id_nivel,
+        cargo: convocatoria.cargo,
+        establecimiento: convocatoria.id_establecimiento,
+        causal: convocatoria.id_causal,
+        expte: convocatoria.expte,
+        caracter: convocatoria.id_caracter,
+        fecha: fechaHora,
+        archivo: convocatoria.nombre_archivo,
+        habilita: convocatoria.habilita,
+      });
+    }
+  }, [convocatoria]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,10 +91,44 @@ const ModalConvocatoria = ({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const isMobile = deviceWidth <= 600; 
+  const isMobile = deviceWidth <= 600;
   if (!convocatoria) {
     return null;
   }
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    let newValue = value;
+
+    setFormularioValues({
+      ...formularioValues,
+      [name]: newValue,
+    });
+    console.log(formularioValues);
+  };
+  const handleHabilitarChange = (event) => {
+    setFormularioValues({
+      ...formularioValues,
+      habilita: event.target.checked ? 1 : 0,
+    });
+  };
+
+  const editarConvocatoria = async (convocatoria) => {
+    try {
+      const response = await axios.put(
+        "/educacion/editarConvocatoria",
+        convocatoria
+      );
+      obtenerConvocatorias(idNivel)
+      handleClose()
+      return response.data;
+    } catch (error) {
+      console.error("Error al editar la convocatoria:", error);
+      throw new Error("Error al editar la convocatoria");
+    }
+  };
+
+  const fechaHora = formatearFechaHora(convocatoria.fecha_designa);
   const style = {
     position: "absolute",
     top: "50%",
@@ -62,24 +141,6 @@ const ModalConvocatoria = ({
     boxShadow: 24,
     p: 4,
   };
-  const fechaHora = formatearFechaHora(
-    convocatoria.fecha_designa,
-    convocatoria.hora_designa
-  );
-
-
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
-
-  const handleInputChange = (e)=>{
-    const { name, value } = e.target;
-    setConvocatorias({
-        ...convocatorias,
-        [name]: value,
-      });
-}
-  console.log(convocatorias)
   return (
     <Modal open={modalAbierto} onClose={handleClose}>
       <Box sx={style}>
@@ -133,88 +194,121 @@ const ModalConvocatoria = ({
                   <LaunchIcon style={{ cursor: "pointer" }} />
                 </a>
               </p>
+              <Button
+                  onClick={handleClose}
+                  className="mt-3"
+                  variant="outlined"
+                >
+                  Cerrar
+                </Button>
             </>
           ) : (
             <>
               <form className="d-flex justify-content-around">
                 <div className="w-50 d-flex flex-column gap-3 p-2">
-
-                <InputLabel id="demo-simple-select-label">{`${convocatoria.nombre_nivel}`}</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={convocatorias}
-                  onChange={handleInputChange}
-                >
-                  {Array.isArray(arrayNiveles) && arrayNiveles.map((n) => (
-                    <MenuItem key={n.id_nivel} value={n.id_nivel}>{n.nombre_nivel}</MenuItem>
-                  ))}
-
-                </Select>
-                <InputLabel id="demo-simple-select-label">CARGO</InputLabel>
-                <TextField placeholder={`${convocatoria.cargo}`} onChange={handleInputChange}/>
-                <InputLabel id="demo-simple-select-label">{`${convocatoria.nombre_establecimiento}`}</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={1}
-                  onChange={handleInputChange}
-                >
-                  {Array.isArray(arrayEstablecimientos) && arrayEstablecimientos.map((e) => (
-                    <MenuItem key={e.id_establecimiento} value={e.id_establecimiento}>{e.nombre_establecimiento}</MenuItem>
-                  ))}
-
-                </Select>
-                <InputLabel id="demo-simple-select-label">{`${convocatoria.detalle_causal}`}</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={1}
-                  onChange={handleInputChange}
-                >
-                  {Array.isArray(arrayCausal) && arrayCausal.map((c) => (
-                    <MenuItem key={c.id_causal} value={c.id_causal}>{c.nombre_causal}</MenuItem>
-                  ))}
-
-                </Select>
-                </div>
-                <div className="d-flex flex-column gap-3 w-50 p-2">
-
-                  <InputLabel id="demo-simple-select-label">{`${convocatoria.nombre_caracter}`}</InputLabel>
+                  <InputLabel id="demo-simple-select-label">{`${convocatoria.nombre_nivel}`}</InputLabel>
                   <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={1}
+                    name="nivel"
+                    value={formularioValues.nivel}
                     onChange={handleInputChange}
                   >
-                    {Array.isArray(arrayCaracter) && arrayCaracter.map((car) => (
-                      <MenuItem key={car.id_caracter} value={car.id_caracter}>{car.nombre_caracter}</MenuItem>
-                    ))}
-
+                    {Array.isArray(arrayNiveles) &&
+                      arrayNiveles.map((n) => (
+                        <MenuItem key={n.id_nivel} value={n.id_nivel}>
+                          {n.nombre_nivel}
+                        </MenuItem>
+                      ))}
                   </Select>
-                  <InputLabel id="demo-simple-select-label">EXPEDIENTE</InputLabel>
-                  <TextField placeholder={`${convocatoria.expte}`} onChange={handleInputChange}/>
-                  <InputLabel id="demo-simple-select-label">NOMBRE ARCHIVO</InputLabel>
-                  <TextField placeholder={`${convocatoria.nombre_archivo}`} onChange={handleInputChange}/>
-                  <InputLabel id="demo-simple-select-label">FECHA</InputLabel>
-                  <TextField type="date" placeholder={`${convocatoria.fecha_designa}`} onChange={handleInputChange}/>
+                  <InputLabel>CARGO</InputLabel>
+                  <TextField
+                    placeholder={`${convocatoria.cargo}`}
+                    onChange={handleInputChange}
+                    name="cargo"
+                    value={formularioValues.cargo}
+                  />
+                  <InputLabel>ESTABLECIMIENTO</InputLabel>
+                  <Select
+                    value={formularioValues.establecimiento}
+                    onChange={handleInputChange}
+                    name="establecimiento"
+                  >
+                    {Array.isArray(arrayEstablecimientos) &&
+                      arrayEstablecimientos.map((e) => (
+                        <MenuItem
+                          key={e.id_establecimiento}
+                          value={e.id_establecimiento}
+                        >
+                          {e.nombre_establecimiento}
+                        </MenuItem>
+                      ))}
+                  </Select>
+                  <InputLabel>CAUSAL</InputLabel>
+                  <Select
+                    value={formularioValues.causal}
+                    onChange={handleInputChange}
+                    name="causal"
+                  >
+                    {Array.isArray(arrayCausal) &&
+                      arrayCausal.map((c) => (
+                        <MenuItem key={c.id_causal} value={c.id_causal}>
+                          {c.nombre_causal}
+                        </MenuItem>
+                      ))}
+                  </Select>
+                </div>
+                <div className="d-flex flex-column gap-3 w-50 p-2">
+                  <InputLabel>EXPEDIENTE</InputLabel>
+                  <TextField
+                    placeholder={`${convocatoria.expte}`}
+                    onChange={handleInputChange}
+                    name="expte"
+                    value={formularioValues.expte}
+                  />
+                  <InputLabel>CARACTER</InputLabel>
+                  <Select
+                    value={formularioValues.caracter}
+                    onChange={handleInputChange}
+                    name="caracter"
+                  >
+                    {Array.isArray(arrayCaracter) &&
+                      arrayCaracter.map((car) => (
+                        <MenuItem key={car.id_caracter} value={car.id_caracter}>
+                          {car.nombre_caracter}
+                        </MenuItem>
+                      ))}
+                  </Select>
+                  <InputLabel>FECHA</InputLabel>
+                  <TextField
+                    type="date"
+                    onChange={handleInputChange}
+                    name="fecha"
+                    value={formatearFechaHora(formularioValues.fecha)}
+                  />
+                  <InputLabel>NOMBRE ARCHIVO</InputLabel>
+                  <TextField
+                    placeholder={`${convocatoria.nombre_archivo}`}
+                    onChange={handleInputChange}
+                    name="archivo"
+                    value={formularioValues.archivo}
+                  />
                   <div className="d-flex align-items-center">
                     <p className="m-0">Habilita:</p>
                     <Switch
-                        checked={checked}
-                        onChange={handleChange}
-                      />
+                      checked={formularioValues.habilita === 1}
+                      onChange={handleHabilitarChange}
+                      name="habilita"
+                    />
                   </div>
-                    
                 </div>
               </form>
-                  <Button
-                    onClick={modoEdicion ? handleEditar : handleClose}
-                    className="mt-3"
-                    variant="outlined"
-                  >
-                    {modoEdicion ? "Guardar cambios" : "Cerrar"}
-                  </Button>
+
+                <Button
+                  onClick={() => editarConvocatoria(formularioValues)}
+                  className="mt-3"
+                  variant="outlined"
+                >
+                  Guardar cambios
+                </Button>
             </>
           )}
         </div>

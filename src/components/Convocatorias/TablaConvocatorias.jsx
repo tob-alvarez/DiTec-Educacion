@@ -163,6 +163,7 @@ const TablaConvocatorias = ({ idNivel }) => {
           handleClose={() => setModalAbierto(false)}
           modoEdicion={modoEdicion}
           handleEditar={handleEditar}
+          idNivel={idNivel}
         />
       </div>
     </>

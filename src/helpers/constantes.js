@@ -6,7 +6,6 @@ export const CONVOCATORIA_FORM_VALUES = {
     expte: "",
     caracter: "",
     fecha: "",
-    hora: "",
     archivo: "",
     habilitado: "",
   };
