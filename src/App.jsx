@@ -7,6 +7,7 @@ import Convocatorias from "./components/Convocatorias/Convocatorias";
 import Padrones from "./components/Padrones/Padrones";
 import Novedades from "./components/Novedades/Novedades";
 import ProviderEducacion from "./Context/EducaContext";
+import AgregarConvocatoria from "./components/Convocatorias/AgregarConvocatoria";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
               <Route exact path="/convocatorias" element={<Convocatorias />} />
               <Route exact path="/padrones" element={<Padrones />} />
               <Route exact path="/novedades" element={<Novedades />} />
+              <Route exact path="/agregar-convoca" element={<AgregarConvocatoria />} />
               {/* <Route exact path="/perfil" element={<Perfil />} /> */}
             </Routes>
           </Layout>

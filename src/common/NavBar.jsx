@@ -32,11 +32,6 @@ export default function NavBar() {
     setAnchorEl(null);
   };
 
-  const goToPerfil = () => {
-    setAnchorEl(null);
-    navigate('/perfil')
-  };
-
   const handleLogout = () => {
     // logout();
     navigate("/");
@@ -84,7 +79,6 @@ export default function NavBar() {
                       open={Boolean(anchorEl)}
                       onClose={handleClose}
                     >
-                      <MenuItem onClick={goToPerfil}>Mi perfil</MenuItem>
                       <MenuItem onClick={handleLogout}>Cerrar Sesión</MenuItem>
                     </Menu>
                   </div>

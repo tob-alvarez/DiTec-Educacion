@@ -5,3 +5,8 @@
 /* form{
     flex-direction: column;
 } */
+@media (max-width: 600px) {
+    .formAgregarConvocatoria{
+        flex-direction: column;
+    }
+  }

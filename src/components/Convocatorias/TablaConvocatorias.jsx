@@ -15,6 +15,7 @@ import { formatearFechaHora } from "../../helpers/convertirFecha";
 import { Button } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { EducaContext } from "../../Context/EducaContext";
+import { useNavigate } from "react-router-dom";
 
 const TablaConvocatorias = ({ idNivel }) => {
   // eslint-disable-next-line no-unused-vars
@@ -26,7 +27,7 @@ const TablaConvocatorias = ({ idNivel }) => {
     useState(null);
   const { arrayFiltrado, obtenerConvocatorias } = useContext(EducaContext);
   const [paginatedArray, setPaginatedArray] = useState([]);
-
+  const navigate = useNavigate()
   //Funcion para listar las convocatorias
   useEffect(() => {
     obtenerConvocatorias(idNivel);
@@ -81,7 +82,7 @@ const TablaConvocatorias = ({ idNivel }) => {
         <Button
           variant="contained"
           disabled={convocatoriaSeleccionada !== null}
-          onClick={() => abrirModal(null)}
+          onClick={() => navigate('/agregar-convoca')}
         >
           NUEVO
         </Button>

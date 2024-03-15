@@ -32,7 +32,7 @@ const obtenerConvocatorias = async (idNivel) => {
   
       // Actualiza los estados con las convocatorias filtradas y ordenadas
       setConvocatorias(resultado.data);
-      setArrayFiltrado(arrayFiltradoOrdenado);
+      setArrayFiltrado(arrayFiltradoOrdenado.reverse());
     } catch (error) {
       console.log(error);
     }
