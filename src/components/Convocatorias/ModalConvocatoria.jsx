@@ -35,6 +35,7 @@ const ModalConvocatoria = ({
     expte: "",
     caracter: "",
     fecha: "",
+    hora: "",
     archivo: "",
     habilita: 0,
   });
@@ -183,7 +184,7 @@ const ModalConvocatoria = ({
                 <b>Caracter:</b> {convocatoria.nombre_caracter}
               </p>
               <p style={{ fontSize: "1.2rem", margin: "5px 0" }}>
-                <b>Fecha / Hora designacion:</b> {fechaHora}
+                <b>Fecha / Hora designacion:</b> {fechaHora} / {convocatoria.hora_designa}
               </p>
               <p style={{ fontSize: "1.2rem", margin: "5px 0" }}>
                 <b>Lugar designacion:</b> Jujuy 259
@@ -255,8 +256,6 @@ const ModalConvocatoria = ({
                         </MenuItem>
                       ))}
                   </Select>
-                </div>
-                <div className="d-flex flex-column gap-3 w-50 p-2">
                   <InputLabel>EXPEDIENTE</InputLabel>
                   <TextField
                     placeholder={`${convocatoria.expte}`}
@@ -264,6 +263,8 @@ const ModalConvocatoria = ({
                     name="expte"
                     value={formularioValues.expte}
                   />
+                </div>
+                <div className="d-flex flex-column gap-3 w-50 p-2">
                   <InputLabel>CARACTER</InputLabel>
                   <Select
                     value={formularioValues.caracter}
@@ -277,12 +278,19 @@ const ModalConvocatoria = ({
                         </MenuItem>
                       ))}
                   </Select>
-                  <InputLabel>FECHA</InputLabel>
+                  <InputLabel>FECHA DESIGNACION</InputLabel>
                   <TextField
                     type="date"
                     onChange={handleInputChange}
                     name="fecha"
                     value={formatearFechaHora(formularioValues.fecha)}
+                  />
+                  <InputLabel>HORA DESIGNACION</InputLabel>
+                  <TextField
+                    onChange={handleInputChange}
+                    name="hora"
+                    value={formularioValues.hora}
+                    placeholder="Ej: 09:00:00"
                   />
                   <InputLabel>NOMBRE ARCHIVO</InputLabel>
                   <TextField

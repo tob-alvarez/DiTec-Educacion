@@ -10,3 +10,6 @@
         flex-direction: column;
     }
   }
+  .MuiInputBase-input{
+    height: 15px !important;
+  }
